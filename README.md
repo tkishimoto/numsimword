@@ -1,7 +1,7 @@
 numsimword
 ====
 
-In Machine Learning algorithms to analyze text similarity, such as Doc2Vec, different number words generally show randome similarity. The numsimword convert numbers to words, which show (almost) linear similarity based on magnitude of numbers.   
+In Machine Learning algorithms to analyze text similarity, such as Doc2Vec, different number words generally show randome similarity. The numsimword convert numbers to words, which show (almost) linear similarity based on magnitude of numbers, or similarity based on number of digits.   
 
 ## Installation
 
