@@ -1,19 +1,18 @@
 class NumsimWord:
 
-    def __init__(self, max_digit=2, 
-                       max_bit=10,
-                       meta_info='num'):
+    def __init__(self):
 
-        self.max_digit = max_digit
-        self.max_bit   = max_bit
-        self.meta_info = meta_info
+        self.max_digit = 2
+        self.max_bit   = 10
+        self.meta_info1 = 'bit'
+        self.meta_info2 = 'digit'
    
 
-    def get_max_number(self):
+    def get_max_linear_number(self):
         return pow(self.max_bit, self.max_digit)
 
 
-    def get_sim_word(self, number):
+    def get_linear_word(self, number):
         result = '' 
 
         counters = [0]*self.max_digit
@@ -39,9 +38,33 @@ class NumsimWord:
 
         for ii in range(self.max_bit):
             if ii > (count % self.max_bit):
-                result = '%s%sto%s ' % (self.meta_info, digit, iter) + result
+                result = '%s%sto%s ' % (self.meta_info1, digit, iter) + result
             else:
-                result = '%s%sto%s ' % (self.meta_info, digit, iter + 1) + result
+                result = '%s%sto%s ' % (self.meta_info1, digit, iter + 1) + result
 
         return result
 
+
+    def get_digit_word(self, num):
+        result = '' 
+    
+        num_str = str(int(num))
+        n_digits = len(num_str)
+
+        pre_bit = ''
+        for ii in range(n_digits):
+
+            if ii >= self.max_digit:
+                break
+
+            bit = num_str[ii]
+
+            if pre_bit:
+                bit = pre_bit + 'to' + bit
+
+            result += '%s%sto%s %s%sto%s ' % (self.meta_info2, n_digits, n_digits-ii,
+                                              self.meta_info1, n_digits, bit) 
+
+            pre_bit = bit 
+        
+        return result
