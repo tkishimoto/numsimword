@@ -52,12 +52,15 @@ class NumsimWord:
         n_digits = len(num_str)
 
         pre_bit = ''
-        for ii in range(n_digits):
+        for ii in range(self.max_digit):
 
             if ii >= self.max_digit:
                 break
 
-            bit = num_str[ii]
+            if ii >= n_digits:
+                bit = '0'
+            else:
+                bit = num_str[ii]
 
             if pre_bit:
                 bit = pre_bit + 'to' + bit
